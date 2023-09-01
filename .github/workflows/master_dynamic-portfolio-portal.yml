@@ -30,7 +30,7 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: dist
+          name: node-app
           path: ./dist
 
   deploy:
@@ -44,7 +44,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: dist
+          name: node-app
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -53,4 +53,4 @@ jobs:
           app-name: 'dynamic-portfolio-portal'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F644A51DB10C494B9754339C9D13169A }}
-          package: dist
+          package: .
