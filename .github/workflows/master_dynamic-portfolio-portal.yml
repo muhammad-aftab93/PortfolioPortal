@@ -53,4 +53,4 @@ jobs:
           app-name: 'dynamic-portfolio-portal'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F644A51DB10C494B9754339C9D13169A }}
-          package: dist
+          package: .
