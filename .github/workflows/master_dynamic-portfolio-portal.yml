@@ -46,9 +46,6 @@ jobs:
         with:
           name: dist
 
-      - name: Restore npm dependencies
-        run: npm install
-
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -56,4 +53,4 @@ jobs:
           app-name: 'dynamic-portfolio-portal'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F644A51DB10C494B9754339C9D13169A }}
-          package: .
+          package: dist
