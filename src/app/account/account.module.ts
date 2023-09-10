@@ -10,9 +10,14 @@ import {
   CardGroupComponent,
   ColComponent,
   ContainerComponent,
+  FormControlDirective,
+  FormDirective,
   InputGroupComponent,
+  InputGroupTextDirective,
   RowComponent
 } from "@coreui/angular";
+import {IconDirective} from "@coreui/icons-angular";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -29,7 +34,12 @@ import {
     CardGroupComponent,
     CardComponent,
     CardBodyComponent,
-    ButtonDirective
+    ButtonDirective,
+    FormControlDirective,
+    InputGroupTextDirective,
+    FormDirective,
+    IconDirective,
+    ReactiveFormsModule
   ]
 })
 export class AccountModule {

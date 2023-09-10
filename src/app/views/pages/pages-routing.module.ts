@@ -6,7 +6,7 @@ import {DefaultLayoutComponent} from "../../containers";
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     component: DefaultLayoutComponent
   },
   {

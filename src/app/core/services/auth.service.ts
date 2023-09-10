@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router} from "@angular/router";
+import {ApiService} from "./api.service";
+import {url} from "../apis";
 
 @Injectable({providedIn: 'root'})
 
@@ -9,13 +11,15 @@ import {Router} from "@angular/router";
 export class AuthenticationService {
 
   constructor(
-    private router: Router) {
+    private router: Router,
+    private apiService: ApiService) {
   }
 
   register(email: string, password: string) {
   }
 
-  login(username: string, password: string) {
+  login(email: string, password: string) {
+    return this.apiService.sendRequest(url.login, 'post', {email: email, password: password});
   }
 
   /**
