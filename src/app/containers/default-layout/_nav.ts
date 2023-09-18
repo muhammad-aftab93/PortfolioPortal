@@ -1,14 +1,10 @@
-import { INavData } from '@coreui/angular';
+import {INavData} from '@coreui/angular';
 
 export const navItems: INavData[] = [
   {
     name: 'Dashboard',
-    url: '/dashboard',
-    iconComponent: { name: 'cil-speedometer' },
-    badge: {
-      color: 'info',
-      text: 'NEW'
-    }
+    url: '/',
+    iconComponent: {name: 'cil-speedometer'},
   },
   {
     title: true,
@@ -16,7 +12,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Resume',
-    iconComponent: { name: 'cil-puzzle' },
+    iconComponent: {name: 'cil-puzzle'},
     children: [
       {
         name: 'Add Resume',
