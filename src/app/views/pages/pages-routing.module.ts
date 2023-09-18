@@ -18,6 +18,10 @@ const routes: Routes = [
       title: 'Page 500'
     }
   },
+  {
+    path: 'resume',
+    loadChildren: () => import('./resume/resume.module').then(m => m.ResumeModule)
+  }
 ];
 
 @NgModule({

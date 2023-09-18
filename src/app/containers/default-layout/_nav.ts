@@ -15,8 +15,8 @@ export const navItems: INavData[] = [
     iconComponent: {name: 'cil-puzzle'},
     children: [
       {
-        name: 'Add Resume',
-        url: '/resume/add'
+        name: 'Personal Details',
+        url: '/resume/personal-details'
       },
     ]
   },
