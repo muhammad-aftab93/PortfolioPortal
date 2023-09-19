@@ -1,0 +1,99 @@
+<c-card>
+  <c-card-header class="d-flex justify-content-between">
+    <h5> Personal Details </h5>
+    <span class="mt-1" style="cursor: pointer" title="Edit">
+      <svg cIcon name="cil-pencil"></svg>
+    </span>
+  </c-card-header>
+  <c-card-body>
+
+
+    <c-row class="mb-3 justify-content-center">
+      <div class="col-6 text-center">
+        <img alt="UserPic" class="img-fluid" src="{{ personalDetails?.picture }}">
+      </div>
+    </c-row>
+
+    <c-row class="mb-3">
+      <div class="col-3">
+        <label cLabel>First Name</label>
+      </div>
+      <div class="col-9">
+        <p cCardText>{{ personalDetails?.firstName }}</p>
+      </div>
+    </c-row>
+
+    <c-row class="mb-3">
+      <div class="col-3">
+        <label cLabel>Middle Name</label>
+      </div>
+      <div class="col-9">
+        <p cCardText>{{ personalDetails?.middleName }}</p>
+      </div>
+    </c-row>
+
+    <c-row class="mb-3">
+      <div class="col-3">
+        <label cLabel>Last Name</label>
+      </div>
+      <div class="col-9">
+        <p cCardText>{{ personalDetails?.lastName }}</p>
+      </div>
+    </c-row>
+
+    <c-row class="mb-3">
+      <div class="col-3">
+        <label cLabel>Email</label>
+      </div>
+      <div class="col-9">
+        <p cCardText>{{ personalDetails?.email }}</p>
+      </div>
+    </c-row>
+
+    <c-row class="mb-3">
+      <div class="col-3">
+        <label cLabel>Phone Number</label>
+      </div>
+      <div class="col-9">
+        <p cCardText>{{ personalDetails?.phoneNumber }}</p>
+      </div>
+    </c-row>
+
+    <c-row class="mb-3">
+      <div class="col-3">
+        <label cLabel>Role</label>
+      </div>
+      <div class="col-9">
+        <p cCardText>{{ personalDetails?.role }}</p>
+      </div>
+    </c-row>
+
+    <c-row class="mb-3">
+      <div class="col-3">
+        <label cLabel>Designation</label>
+      </div>
+      <div class="col-9">
+        <p cCardText>{{ personalDetails?.designation }}</p>
+      </div>
+    </c-row>
+
+    <c-row class="mb-3">
+      <div class="col-3">
+        <label cLabel>Location</label>
+      </div>
+      <div class="col-9">
+        <p cCardText>{{ personalDetails?.location }}</p>
+      </div>
+    </c-row>
+
+    <c-row class="mb-3">
+      <div class="col-3">
+        <label cLabel>Personal Statement</label>
+      </div>
+      <div class="col-9">
+        <p cCardText>{{ personalDetails?.personalStatement }}</p>
+      </div>
+    </c-row>
+
+  </c-card-body>
+</c-card>

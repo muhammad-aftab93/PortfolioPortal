@@ -2,13 +2,8 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {Page404Component} from './page404/page404.component';
 import {Page500Component} from './page500/page500.component';
-import {DefaultLayoutComponent} from "../../containers";
 
 const routes: Routes = [
-  {
-    path: 'dashboard',
-    component: DefaultLayoutComponent
-  },
   {
     path: '404',
     component: Page404Component,
@@ -23,6 +18,10 @@ const routes: Routes = [
       title: 'Page 500'
     }
   },
+  {
+    path: 'resume',
+    loadChildren: () => import('./resume/resume.module').then(m => m.ResumeModule)
+  }
 ];
 
 @NgModule({
