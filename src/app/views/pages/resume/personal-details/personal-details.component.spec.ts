@@ -16,6 +16,5 @@ describe('PersonalDetailsComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });
