@@ -37,6 +37,9 @@ import {
 
 import {IconModule, IconSetService} from '@coreui/icons-angular';
 import {HttpClientModule} from "@angular/common/http";
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
+import {appReducers} from "./store/app.reducer";
 
 
 const APP_CONTAINERS = [
@@ -73,7 +76,9 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([])
   ],
   providers: [
     {
