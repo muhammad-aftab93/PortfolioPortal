@@ -1,36 +1,17 @@
-import {Injectable} from "@angular/core";
-import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {login, loginStart} from "./auth.actions";
-import {tap} from "rxjs";
-import {Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {ApiService} from "../../core/services/api.service";
+import {login} from "./auth.actions";
 
 @Injectable()
 export class AuthEffects {
 
-  loginStart = createEffect(() =>
+  login$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(loginStart),
-    ));
+      ofType(login),
+    ))
 
-  loginSuccess = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(login),
-        tap(() => {
-          this.router.navigate(['/']);
-        })
-      ),
-    {dispatch: false}
-  );
 
-  constructor(
-    private actions$: Actions,
-    private http: HttpClient,
-    private router: Router,
-    private apiService: ApiService
-  ) {
+  constructor(private actions$: Actions, private apiService: ApiService) {
   }
 }
-
