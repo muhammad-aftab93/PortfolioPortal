@@ -40,6 +40,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {appReducers} from "./store/app.reducer";
+import {AuthEffects} from "./account/store/auth.effects";
 
 
 const APP_CONTAINERS = [
@@ -78,7 +79,7 @@ const APP_CONTAINERS = [
     CardModule,
     HttpClientModule,
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [
     {
