@@ -4,6 +4,8 @@ import {NavigationEnd, Router} from '@angular/router';
 import {IconSetService} from '@coreui/icons-angular';
 import {iconSubset} from './icons/icon-subset';
 import {Title} from '@angular/platform-browser';
+import {autoLogin} from "./account/store/auth.actions";
+import {Store} from "@ngrx/store";
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -16,7 +18,8 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private titleService: Title,
-    private iconSetService: IconSetService
+    private iconSetService: IconSetService,
+    private store: Store
   ) {
     titleService.setTitle(this.title);
     // iconSet singleton
@@ -24,6 +27,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.store.dispatch(autoLogin());
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;

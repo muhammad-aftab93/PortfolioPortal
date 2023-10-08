@@ -54,3 +54,11 @@ export class AuthenticationService {
 
 }
 
+export function isTokenValid(token: string | null): boolean {
+  if (token) {
+    const tokenPayload = JSON.parse(atob(token.split('.')[1]));
+    const expirationDate = new Date(tokenPayload.exp * 1000);
+    return expirationDate > new Date();
+  }
+  return false;
+}
