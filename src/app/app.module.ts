@@ -85,7 +85,7 @@ const APP_CONTAINERS = [
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
-    },
+    }, // adds hashes to the URL
     IconSetService,
     Title
   ],

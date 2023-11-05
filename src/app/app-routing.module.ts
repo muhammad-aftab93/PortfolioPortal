@@ -4,13 +4,13 @@ import {AuthGuard} from "./core/guards/auth.guard";
 import {DefaultLayoutComponent} from "./containers";
 
 const routes: Routes = [
+  {path: '', loadChildren: () => import('./account/account.module').then(m => m.AccountModule)},
   {
     path: '',
     component: DefaultLayoutComponent,
     loadChildren: () => import('./views/pages/pages.module').then((m) => m.PagesModule),
     canActivate: [AuthGuard]
   },
-  {path: '', loadChildren: () => import('./account/account.module').then(m => m.AccountModule)}
 
 ];
 
@@ -20,7 +20,6 @@ const routes: Routes = [
       scrollPositionRestoration: 'top',
       anchorScrolling: 'enabled',
       initialNavigation: 'enabledBlocking'
-      // relativeLinkResolution: 'legacy'
     })
   ],
   exports: [RouterModule]

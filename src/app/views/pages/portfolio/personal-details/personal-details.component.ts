@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ResumeService} from "../../../../core/services/resume.service";
-import {PersonalDetails} from "../../../../core/models/resume.interface";
+import {PersonalDetailsService} from "../../../../core/services/personal-details.service";
+import {IPersonalDetails} from "../../../../core/models/personal-details-interface";
 
 @Component({
   selector: 'app-personal-details',
@@ -8,9 +8,9 @@ import {PersonalDetails} from "../../../../core/models/resume.interface";
   styleUrls: ['./personal-details.component.scss']
 })
 export class PersonalDetailsComponent implements OnInit {
-  personalDetails!: PersonalDetails;
+  personalDetails!: IPersonalDetails;
 
-  constructor(private resumeService: ResumeService) {
+  constructor(private resumeService: PersonalDetailsService) {
   }
 
   ngOnInit() {

@@ -29,7 +29,7 @@ export class AuthEffects {
       tap(action => {
         localStorage.setItem('token', action.token);
         localStorage.setItem('user', JSON.stringify(action.user));
-        this.router.navigate(['/']);
+        this.router.navigate(['/portfolio/personal-details']);
       })
     ), {dispatch: false}  // This is important as we're not dispatching another action here.
   );
