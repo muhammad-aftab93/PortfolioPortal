@@ -19,8 +19,8 @@ const routes: Routes = [
     }
   },
   {
-    path: 'resume',
-    loadChildren: () => import('./resume/resume.module').then(m => m.ResumeModule)
+    path: 'portfolio',
+    loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule)
   }
 ];
 

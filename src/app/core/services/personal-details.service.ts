@@ -5,7 +5,7 @@ import {url} from "../apis";
 @Injectable({
   providedIn: 'root'
 })
-export class ResumeService {
+export class PersonalDetailsService {
 
   constructor(private apiService: ApiService) {
   }

@@ -8,8 +8,8 @@ export interface AuthState {
 }
 
 const initialState: AuthState = {
-  user: JSON.parse(localStorage.getItem('user')!) || null,
-  authToken: JSON.parse(localStorage.getItem('authToken')!) || null,
+  user: null,
+  authToken: null,
   error: null
 };
 

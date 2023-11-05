@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {ResumeRoutingModule} from './resume-routing.module';
+import {PortfolioRoutingModule} from './portfolio-routing.module';
 import {PersonalDetailsComponent} from './personal-details/personal-details.component';
 import {
   ButtonDirective,
@@ -25,7 +25,7 @@ import {IconDirective} from "@coreui/icons-angular";
   ],
   imports: [
     CommonModule,
-    ResumeRoutingModule,
+    PortfolioRoutingModule,
     CardHeaderComponent,
     CardBodyComponent,
     CardComponent,
@@ -40,5 +40,5 @@ import {IconDirective} from "@coreui/icons-angular";
     IconDirective
   ]
 })
-export class ResumeModule {
+export class PortfolioModule {
 }
