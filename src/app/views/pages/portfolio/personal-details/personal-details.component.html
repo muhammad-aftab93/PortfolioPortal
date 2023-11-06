@@ -1,97 +1,122 @@
 <c-card>
   <c-card-header class="d-flex justify-content-between">
     <h5> Personal Details </h5>
-    <span class="mt-1" style="cursor: pointer" title="Edit">
+    <span (click)="onEdit()" class="mt-1" style="cursor: pointer" title="Edit">
       <svg cIcon name="cil-pencil"></svg>
     </span>
   </c-card-header>
   <c-card-body>
 
+    <form [formGroup]="personalForm">
+      <c-row class="mb-3 justify-content-center">
+        <div class="col-6 text-center">
+          <img alt="UserPic" class="img-fluid" src="{{ personalDetails?.picture }}">
+        </div>
+      </c-row>
 
-    <c-row class="mb-3 justify-content-center">
-      <div class="col-6 text-center">
-        <img alt="UserPic" class="img-fluid" src="{{ personalDetails?.picture }}">
-      </div>
-    </c-row>
+      <c-row class="mb-3">
+        <div class="col-3">
+          <label cLabel>First Name</label>
+        </div>
+        <div class="col-9">
+          <p *ngIf="!isEditing" cCardText>{{ personalDetails?.firstName }}</p>
+          <input *ngIf="isEditing" cFormControl formControlName="firstName" type="text">
+        </div>
+      </c-row>
+
+      <c-row class="mb-3">
+        <div class="col-3">
+          <label cLabel>Middle Name</label>
+        </div>
+        <div class="col-9">
+          <p *ngIf="!isEditing" cCardText>{{ personalDetails?.middleName }}</p>
+          <input *ngIf="isEditing" cFormControl formControlName="middleName" type="text">
+        </div>
+      </c-row>
+
+      <c-row class="mb-3">
+        <div class="col-3">
+          <label cLabel>Last Name</label>
+        </div>
+        <div class="col-9">
+          <p *ngIf="!isEditing" cCardText>{{ personalDetails?.lastName }}</p>
+          <input *ngIf="isEditing" cFormControl formControlName="lastName" type="text">
+        </div>
+      </c-row>
+
+      <c-row class="mb-3">
+        <div class="col-3">
+          <label cLabel>Email</label>
+        </div>
+        <div class="col-9">
+          <p *ngIf="!isEditing" cCardText>{{ personalDetails?.email }}</p>
+          <input *ngIf="isEditing"
+                 [valid]="!(personalForm.controls['email'].invalid && (personalForm.controls['email'].dirty || personalForm.controls['email'].touched))"
+                 cFormControl
+                 formControlName="email">
+          <c-form-feedback
+            *ngIf="personalForm.controls['email'].invalid && (personalForm.controls['email'].dirty || personalForm.controls['email'].touched)"
+            [valid]="false">
+            Please enter valid email.
+          </c-form-feedback>
+        </div>
+      </c-row>
+
+      <c-row class="mb-3">
+        <div class="col-3">
+          <label cLabel>Phone Number</label>
+        </div>
+        <div class="col-9">
+          <p *ngIf="!isEditing" cCardText>{{ personalDetails?.phoneNumber }}</p>
+          <input *ngIf="isEditing" cFormControl formControlName="phoneNumber" type="text">
+        </div>
+      </c-row>
+
+      <c-row class="mb-3">
+        <div class="col-3">
+          <label cLabel>Role</label>
+        </div>
+        <div class="col-9">
+          <p *ngIf="!isEditing" cCardText>{{ personalDetails?.role }}</p>
+          <input *ngIf="isEditing" cFormControl formControlName="role" type="text">
+        </div>
+      </c-row>
+
+      <c-row class="mb-3">
+        <div class="col-3">
+          <label cLabel>Designation</label>
+        </div>
+        <div class="col-9">
+          <p *ngIf="!isEditing" cCardText>{{ personalDetails?.designation }}</p>
+          <input *ngIf="isEditing" cFormControl formControlName="designation" type="text">
+        </div>
+      </c-row>
+
+      <c-row class="mb-3">
+        <div class="col-3">
+          <label cLabel>Location</label>
+        </div>
+        <div class="col-9">
+          <p *ngIf="!isEditing" cCardText>{{ personalDetails?.location }}</p>
+          <input *ngIf="isEditing" cFormControl formControlName="location" type="text">
+        </div>
+      </c-row>
+
+      <c-row class="mb-3">
+        <div class="col-3">
+          <label cLabel>Personal Statement</label>
+        </div>
+        <div class="col-9">
+          <p *ngIf="!isEditing" cCardText>{{ personalDetails?.personalStatement }}</p>
+          <input *ngIf="isEditing" cFormControl formControlName="personalStatement" type="text">
+        </div>
+      </c-row>
+    </form>
 
     <c-row class="mb-3">
-      <div class="col-3">
-        <label cLabel>First Name</label>
-      </div>
-      <div class="col-9">
-        <p cCardText>{{ personalDetails?.firstName }}</p>
-      </div>
-    </c-row>
-
-    <c-row class="mb-3">
-      <div class="col-3">
-        <label cLabel>Middle Name</label>
-      </div>
-      <div class="col-9">
-        <p cCardText>{{ personalDetails?.middleName }}</p>
-      </div>
-    </c-row>
-
-    <c-row class="mb-3">
-      <div class="col-3">
-        <label cLabel>Last Name</label>
-      </div>
-      <div class="col-9">
-        <p cCardText>{{ personalDetails?.lastName }}</p>
-      </div>
-    </c-row>
-
-    <c-row class="mb-3">
-      <div class="col-3">
-        <label cLabel>Email</label>
-      </div>
-      <div class="col-9">
-        <p cCardText>{{ personalDetails?.email }}</p>
-      </div>
-    </c-row>
-
-    <c-row class="mb-3">
-      <div class="col-3">
-        <label cLabel>Phone Number</label>
-      </div>
-      <div class="col-9">
-        <p cCardText>{{ personalDetails?.phoneNumber }}</p>
-      </div>
-    </c-row>
-
-    <c-row class="mb-3">
-      <div class="col-3">
-        <label cLabel>Role</label>
-      </div>
-      <div class="col-9">
-        <p cCardText>{{ personalDetails?.role }}</p>
-      </div>
-    </c-row>
-
-    <c-row class="mb-3">
-      <div class="col-3">
-        <label cLabel>Designation</label>
-      </div>
-      <div class="col-9">
-        <p cCardText>{{ personalDetails?.designation }}</p>
-      </div>
-    </c-row>
-
-    <c-row class="mb-3">
-      <div class="col-3">
-        <label cLabel>Location</label>
-      </div>
-      <div class="col-9">
-        <p cCardText>{{ personalDetails?.location }}</p>
-      </div>
-    </c-row>
-
-    <c-row class="mb-3">
-      <div class="col-3">
-        <label cLabel>Personal Statement</label>
-      </div>
-      <div class="col-9">
-        <p cCardText>{{ personalDetails?.personalStatement }}</p>
+      <div *ngIf="isEditing" class="d-flex justify-content-end">
+        <button (click)="onCancel()" cButton class="me-2" color="secondary">Cancel</button>
+        <button (click)="onSubmit()" cButton color="info">Save</button>
       </div>
     </c-row>
 
