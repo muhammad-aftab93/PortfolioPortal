@@ -36,11 +36,13 @@ import {
 } from '@coreui/angular';
 
 import {IconModule, IconSetService} from '@coreui/icons-angular';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {appReducers} from "./store/app.reducer";
 import {AuthEffects} from "./account/store/auth.effects";
+import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
+import {ErrorInterceptor} from "./core/interceptors/error.interceptor";
 
 
 const APP_CONTAINERS = [
@@ -82,6 +84,8 @@ const APP_CONTAINERS = [
     EffectsModule.forRoot([AuthEffects])
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
