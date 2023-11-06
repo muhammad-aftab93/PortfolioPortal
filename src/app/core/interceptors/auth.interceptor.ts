@@ -8,10 +8,11 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    // Check if the URL includes 'user' or if the method is a POST request
+    if (request.url.includes('user') || request.method === 'POST') {
+      const token = localStorage.getItem('token');
 
-    if (request.url.includes('user')) {
-      const token = localStorage.getItem('authToken');
-
+      // If a token is found, clone the request to include the authorization header
       if (token) {
         const authRequest = request.clone({
           setHeaders: {
@@ -23,6 +24,7 @@ export class AuthInterceptor implements HttpInterceptor {
       }
     }
 
+    // If conditions are not met, pass the request through unchanged
     return next.handle(request);
   }
 }
