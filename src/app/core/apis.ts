@@ -8,6 +8,6 @@ export const url = {
   //Resume
 
   //Personal Details
-  getPersonalDetails: environment.baseurl + 'personal-details'
+  personalDetails: environment.baseurl + 'personal-details'
 
 }
