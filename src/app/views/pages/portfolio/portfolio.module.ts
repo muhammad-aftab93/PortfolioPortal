@@ -13,10 +13,12 @@ import {
   ColComponent,
   ColDirective,
   FormControlDirective,
+  FormFeedbackComponent,
   FormLabelDirective,
   RowComponent
 } from "@coreui/angular";
 import {IconDirective} from "@coreui/icons-angular";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import {IconDirective} from "@coreui/icons-angular";
     ColComponent,
     ColDirective,
     FormControlDirective,
-    IconDirective
+    IconDirective,
+    ReactiveFormsModule,
+    FormFeedbackComponent
   ]
 })
 export class PortfolioModule {
