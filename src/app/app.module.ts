@@ -43,6 +43,8 @@ import {appReducers} from "./store/app.reducer";
 import {AuthEffects} from "./account/store/auth.effects";
 import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
 import {ErrorInterceptor} from "./core/interceptors/error.interceptor";
+import {SpinnerComponent} from "./spinner/spinner.component";
+import {LoaderInterceptor} from "./core/interceptors/loader.interceptor";
 
 
 const APP_CONTAINERS = [
@@ -52,7 +54,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS],
+  declarations: [AppComponent, ...APP_CONTAINERS, SpinnerComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -86,6 +88,7 @@ const APP_CONTAINERS = [
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,

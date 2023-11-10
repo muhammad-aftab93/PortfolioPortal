@@ -10,7 +10,8 @@ import {Store} from "@ngrx/store";
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'body',
-  template: '<router-outlet></router-outlet>',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   title = 'Portfolio Portal';

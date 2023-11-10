@@ -25,8 +25,7 @@ export class PersonalDetailsComponent implements OnInit {
   getPersonalDetails() {
     this.resumeService.getPersonalDetails().subscribe((response: IPersonalDetails) => {
       this.personalDetails = response;
-      console.log(this.personalDetails)
-    })
+    });
   }
 
   initPersonalForm() {

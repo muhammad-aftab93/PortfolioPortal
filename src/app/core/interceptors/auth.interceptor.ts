@@ -9,7 +9,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Check if the URL includes 'user' or if the method is a POST request
-    if (request.url.includes('user') || request.method === 'POST') {
+    if (!request.url.includes('users/login') && request.method === 'POST') {
       const token = localStorage.getItem('token');
 
       // If a token is found, clone the request to include the authorization header
