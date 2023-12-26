@@ -12,8 +12,14 @@ export class PersonalDetailsComponent implements OnInit {
   personalDetails!: IPersonalDetails;
   isEditing: boolean = false;
   personalForm!: FormGroup;
+  alertStatus: string = '';
+  alertMessage: string = '';
+  alertTitle: string = '';
+  alertVisible: boolean = false;
+  modalVisible = false;
+  selectedFile: File | null = null;
 
-  constructor(private resumeService: PersonalDetailsService,
+  constructor(private personalDetailsService: PersonalDetailsService,
               private formBuilder: FormBuilder) {
   }
 
@@ -23,8 +29,9 @@ export class PersonalDetailsComponent implements OnInit {
   }
 
   getPersonalDetails() {
-    this.resumeService.getPersonalDetails().subscribe((response: IPersonalDetails) => {
+    this.personalDetailsService.getPersonalDetails().subscribe((response: IPersonalDetails) => {
       this.personalDetails = response;
+      this.personalDetailsService.setUserImage(this.personalDetails.picture ? this.personalDetails.picture : '');
     });
   }
 
@@ -59,9 +66,68 @@ export class PersonalDetailsComponent implements OnInit {
       this.personalForm.markAllAsTouched();
       return;
     }
-    this.resumeService.updatePersonalDetails(this.personalForm.value).subscribe((personalDetails) => {
+    this.personalDetailsService.updatePersonalDetails(this.personalForm.value).subscribe((personalDetails) => {
       this.personalDetails = personalDetails;
       this.isEditing = false;
+      this.showAlert('success', 'Saved', 'Personal details saved successfully.');
     })
+  }
+
+  showAlert(alertStatus: string, alertTitle: string, alertMessage: string): void {
+    this.alertStatus = alertStatus;
+    this.alertTitle = alertTitle;
+    this.alertMessage = alertMessage;
+    this.alertVisible = true;
+
+    setTimeout(() => {
+      this.hideAlert();
+    }, 2000);
+  }
+
+  hideAlert(): void {
+    this.resetAlert();
+  }
+
+  resetAlert(): void {
+    this.alertStatus = '';
+    this.alertTitle = '';
+    this.alertMessage = '';
+    this.alertVisible = false;
+  }
+
+  toggleModal() {
+    this.modalVisible = !this.modalVisible;
+  }
+
+  handleLiveDemoChange(event: any) {
+    this.modalVisible = event;
+  }
+
+  onUpload() {
+    if (this.selectedFile) {
+      const formData = new FormData();
+      formData.append('file', this.selectedFile);
+      this.personalDetailsService.uploadPicture(formData).subscribe(
+        (response) => {
+          this.getPersonalDetails();
+        },
+        (error) => {
+          alert(error.message);
+        },
+        () =>{
+          this.modalVisible = false;
+        }
+      );
+
+    }
+  }
+
+  onFileSelected($event: Event) {
+    const target = event?.target as HTMLInputElement;
+    const fileList: FileList | null = target.files;
+
+    if (fileList && fileList.length > 0) {
+      this.selectedFile = fileList[0];
+    }
   }
 }

@@ -10,9 +10,9 @@
     <form [formGroup]="personalForm">
       <c-row class="mb-3 justify-content-center">
         <div class="col-6 text-center">
-          <img alt="UserPic" class="img-fluid" src="{{ personalDetails?.picture }}">
+          <img alt="UserPic" class="img-fluid rounded-circle" width="100" src="{{ personalDetails?.picture }}">
           <br>
-          <a href="#" style="text-decoration: none;">Change Picture</a>
+          <button *ngIf="isEditing" (click)="toggleModal()" cButton class="mt-2">Change Picture</button>
         </div>
       </c-row>
 
@@ -122,5 +122,34 @@
       </div>
     </c-row>
 
+    <c-row class="mb-3">
+      <c-alert fade [(visible)]="alertVisible" [dismissible]="true" color="{{alertStatus}}"><strong>{{alertTitle}}! </strong>{{alertMessage}}</c-alert>
+    </c-row>
+
   </c-card-body>
 </c-card>
+
+
+<!-- Picture Modal -->
+<c-modal id="liveDemoModal" [visible]="modalVisible" (visibleChange)="handleLiveDemoChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Upload Picture</h5>
+    <button (click)="toggleModal()" cButton color="secondary" cButtonClose>X</button>
+  </c-modal-header>
+  <c-modal-body>
+    <c-row class="mb-3">
+      <div class="col-12">
+        <input type="file" formControlName="picture" (change)="onFileSelected($event)" accept="image/*">
+      </div>
+    </c-row>
+  </c-modal-body>
+  <c-modal-footer>
+    <button
+    (click)="toggleModal()"
+    cButton color="secondary">
+      Cancel
+    </button>
+    <button cButton (click)="onUpload()" color="primary">Upload</button>
+  </c-modal-footer>
+</c-modal>
+<!--  -->

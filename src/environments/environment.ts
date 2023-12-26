@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   baseurl: 'https://dynamic-portfolio-api.azurewebsites.net/'
+  // baseurl: 'https://localhost:7087/'
 };
 
 /*

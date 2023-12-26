@@ -4,6 +4,7 @@ import {CommonModule} from '@angular/common';
 import {PortfolioRoutingModule} from './portfolio-routing.module';
 import {PersonalDetailsComponent} from './personal-details/personal-details.component';
 import {
+  AlertModule,
   ButtonDirective,
   CardBodyComponent,
   CardComponent,
@@ -15,7 +16,8 @@ import {
   FormControlDirective,
   FormFeedbackComponent,
   FormLabelDirective,
-  RowComponent
+  ModalModule,
+  RowComponent,
 } from "@coreui/angular";
 import {IconDirective} from "@coreui/icons-angular";
 import {ReactiveFormsModule} from "@angular/forms";
@@ -41,7 +43,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     FormControlDirective,
     IconDirective,
     ReactiveFormsModule,
-    FormFeedbackComponent
+    FormFeedbackComponent,
+    AlertModule,
+    ModalModule
   ]
 })
 export class PortfolioModule {
